@@ -325,7 +325,7 @@ def binary_pic(name_list):
 
 # 获取汉字label映射表
 def get_label_dict():
-    f=open('./chinese_labels','r')
+    f=open('./chinese_labels','rb')
     label_dict = pickle.load(f)
     f.close()
     return label_dict

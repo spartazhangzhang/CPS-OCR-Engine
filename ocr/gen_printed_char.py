@@ -1,3 +1,4 @@
+
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -158,8 +159,8 @@ class PreprocessResizeKeepRatioFillBG(object):
         if height_large < height_small:
             raise ValueError("height_large <= height_small")
 
-        start_width = (width_large - width_small) / 2
-        start_height = (height_large - height_small) / 2
+        start_width = (width_large - width_small) // 2
+        start_height = (height_large - height_small) // 2
 
         img_large[start_height:start_height + height_small,
                   start_width:start_width + width_small] = img_small
@@ -235,11 +236,11 @@ class FontCheck(object):
         height = self.height
         try:
             for i, char in enumerate(self.lang_chars):
-                img = Image.new("RGB", (width, height), "black") # 黑色背景
+                img = Image.new("RGB", (width, height), (255, 255, 255)) # 黑色背景
                 draw = ImageDraw.Draw(img)
                 font = ImageFont.truetype(font_path, int(width * 0.9),)
                 # 白色字体
-                draw.text((0, 0), char, (255, 255, 255),
+                draw.text((0, 0), char, (0, 0, 0),
                           font=font)
                 data = list(img.getdata())
                 sum_val = 0
